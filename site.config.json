@@ -1,0 +1,23 @@
+{
+  "_note": "Edit this file to swap links. Empty url = shown as 'coming soon'. Rebuild with: python3 build.py",
+  "preview": true,
+  "theme": "synapse",
+  "theme_switcher": false,
+  "site_url": "https://quantechgraphics.com",
+  "tagline": "Building next-gen 3D games and products.",
+  "email_general": "info@quantechgraphics.com",
+  "email_press": "irfan@quantechgraphics.com",
+  "steam_url": "https://store.steampowered.com/app/2432510/",
+  "trailer_url": "",
+  "cqc_demo_url": "",
+  "rig_qa_url": "",
+  "socials": [
+    {"key": "discord",   "name": "Discord",   "url": "https://discord.gg/cQkAbtKJFz"},
+    {"key": "youtube",   "name": "YouTube",   "url": "https://www.youtube.com/@vecterassault-eq3sk"},
+    {"key": "patreon",   "name": "Patreon",   "url": ""},
+    {"key": "instagram", "name": "Instagram", "url": ""},
+    {"key": "tiktok",    "name": "TikTok",    "url": ""},
+    {"key": "x",         "name": "X",         "url": ""},
+    {"key": "facebook",  "name": "Facebook",  "url": ""}
+  ]
+}
