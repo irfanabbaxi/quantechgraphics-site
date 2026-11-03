@@ -1,6 +1,6 @@
 {
   "_note": "Edit this file to swap links. Empty url = shown as 'coming soon'. Rebuild with: python3 build.py",
-  "preview": true,
+  "preview": false,
   "theme": "synapse",
   "theme_switcher": false,
   "site_url": "https://quantechgraphics.com",
