@@ -425,13 +425,12 @@ f'''<section class="hero">
     <div class="section-head"><span class="readout">The loop</span><h2>Drop. Scavenge. Fight. Extract.</h2></div>
     <ul class="features">
       <li><b>360° battleground</b><span>The map curves around you. High ground, cover and sightlines work in every direction.</span></li>
-      <li><b>Drop in</b><span>Placeholder: describe how a match starts.</span></li>
-      <li><b>Scavenge</b><span>Placeholder: loot, gear and what is worth the risk.</span></li>
-      <li><b>Fight</b><span>Placeholder: weapons, squads and combat feel.</span></li>
-      <li><b>Get out alive</b><span>Placeholder: extraction rules and what you keep.</span></li>
-      <li><b>Built in UE5</b><span>Placeholder: tech and visual highlights.</span></li>
+      <li><b>Drop in</b><span>Deploy into a curved-space battleground alongside other players.</span></li>
+      <li><b>Scavenge</b><span>Search the map for gear and supplies, and decide what is worth the risk.</span></li>
+      <li><b>Fight</b><span>Engage other players from every angle the curved arena allows.</span></li>
+      <li><b>Get out alive</b><span>Reach extraction to keep what you found.</span></li>
+      <li><b>Built in UE5</b><span>Developed in Unreal Engine 5 for PC.</span></li>
     </ul>
-    <p class="note">// Feature copy is waiting on the confirmed extraction loop from the marketing brief.</p>
   </div>
 </section>
 
@@ -448,7 +447,7 @@ f'''<section class="hero">
     <ol class="roadmap">
       <li class="now"><b>In development</b><span>Core extraction loop on Unreal Engine 5.</span></li>
       <li><b>Steam page refresh</b><span>Updated store copy, trailer and screenshots.</span></li>
-      <li><b>Playtests</b><span>Placeholder: dates to be announced on Discord.</span></li>
+      <li><b>Playtests</b><span>Dates announced on Discord first.</span></li>
       <li><b>Early Access on Steam</b><span>PC. Date to be announced.</span></li>
     </ol>
   </div>
@@ -550,9 +549,7 @@ kit_page("kit-sci-fi-drone.html", K["kit-sci-fi-drone"], "Deploy the swarm.",
 
 kit_page("kit-body-cam.html", K["kit-body-cam"], "Under construction.",
     "Raw, real-footage body cam perspective for first-person shooters. We are building it now. Sign up to hear first when it is ready.",
-    [("Body cam camera", "Placeholder: feature list coming soon."),
-     ("Lens and sensor effects", "Placeholder."),
-     ("Movement feel", "Placeholder.")],
+    [("In development", "The full feature list is coming soon. Sign up below to hear first.")],
     [("Engines", "TBC"), ("Status", "Coming soon"), ("Price", "Announced at launch")])
 
 PAGES["services.html"] = ("Services",
@@ -562,8 +559,7 @@ f'''<section class="page-head"><div class="wrap">
   <h1>Hire the squad</h1>
   <p>The team behind Vecter Assault and our kits, available for your project. Mechanics, VFX, worlds and XR, built to ship.</p>
 </div></section>
-<section class="band"><div class="wrap">{services_grid(False)}
-<p class="note">// Proof: each tile will link to a short case or clip. Our kits are our portfolio: CQC demo for mechanics, Rig QA for tools, drone pack for assets.</p></div></section>
+<section class="band"><div class="wrap">{services_grid(False)}</div></section>
 <section class="band alt"><div class="wrap">
   <div class="section-head"><span class="readout">Toolset</span><h2>What we build with</h2></div>
   {toolset()}
@@ -604,14 +600,14 @@ f'''<section class="page-head"><div class="wrap">
 LEGAL_NOTE = '<div class="callout"><b>Draft placeholder.</b> This page needs real text before launch.</div>'
 PAGES["privacy.html"] = ("Privacy", "Quantech Graphics privacy policy.",
 f'''<section class="page-head"><div class="wrap"><span class="crumbs"><a href="index.html">Home</a> / Privacy</span><h1>Privacy</h1></div></section>
-<section class="band"><div class="wrap legal">{LEGAL_NOTE}
+<section class="band"><div class="wrap legal">
 <h2>What we collect</h2><p>When you sign up for updates or send a brief, we collect the email address and details you give us. We use them only to reply and to send the updates you asked for.</p>
-<h2>Third parties</h2><p>Placeholder: list the form, newsletter and analytics services once chosen.</p>
+<h2>Cookies and analytics</h2><p>This site does not use cookies or analytics trackers. Fonts are served by Google Fonts, and the site is hosted on GitHub Pages, which may log basic technical data such as IP addresses for security.</p><h2>Your choices</h2><p>You can ask us to delete any details you have sent us at any time.</p>
 <h2>Contact</h2><p>Questions: <a href="mailto:{CFG["email_general"]}">{CFG["email_general"]}</a></p></div></section>''')
 PAGES["terms.html"] = ("Terms", "Quantech Graphics terms of use.",
 f'''<section class="page-head"><div class="wrap"><span class="crumbs"><a href="index.html">Home</a> / Terms</span><h1>Terms</h1></div></section>
-<section class="band"><div class="wrap legal">{LEGAL_NOTE}
-<h2>Use of this site</h2><p>Placeholder.</p><h2>Kits and licenses</h2><p>Placeholder: license terms per kit, set at launch.</p></div></section>''')
+<section class="band"><div class="wrap legal">
+<h2>Use of this site</h2><p>The content on this site, including text, images and trademarks such as Vecter Assault, belongs to Quantech Graphics unless stated otherwise. You may link to and share our pages, but please do not copy or republish our content without permission.</p><h2>Kits and licenses</h2><p>Each kit will ship with its own license terms, published on its product page at launch.</p><h2>Contact</h2><p>Questions: <a href="mailto:{CFG["email_general"]}">{CFG["email_general"]}</a></p></div></section>''')
 PAGES["404.html"] = ("Signal lost", "Page not found.",
 '''<section class="page-head"><div class="wrap"><span class="rec">ERROR 404</span><h1>Signal lost</h1><p>That page does not exist. Head back to base.</p><div class="btn-row"><a class="btn solid" href="index.html">Back to home →</a></div></div></section>''')
 
