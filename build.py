@@ -329,7 +329,7 @@ def rig_qa_btn():
 
 PAGES = {}
 
-PAGES["index.html"] = ("Quantech Graphics",
+PAGES["index.html"] = ("Quantech Graphics · " + CFG["tagline"].rstrip("."),
     "Quantech Graphics is an independent studio building Vecter Assault, a curved-space multiplayer extraction shooter, plus game dev kits and custom game tech for Unreal, Unity, Godot and the web.",
 f'''<section class="hero">
   <div class="hero-media"><img{ph("hero-vecter-assault")} src="{img_src("hero-vecter-assault")}" alt="Vecter Assault key art (placeholder)" loading="eager"></div>
@@ -346,7 +346,8 @@ f'''<section class="hero">
 <section class="band">
   <div class="wrap section-head" style="margin:0 auto 40px">
     <span class="readout">Pick your lane</span>
-    <p class="intro">Quantech Graphics is an independent studio building Vecter Assault, production kits for game developers, and custom game tech for clients across Unreal, Unity, Godot and the web.</p>
+    <h2>{E(CFG["tagline"])}</h2>
+    <p class="intro">Quantech Graphics is an independent studio building Vecter Assault, game kits and engine tools for developers, and custom games and simulations for clients across Unreal, Unity, Godot and the web.</p>
   </div>
   <div class="wrap">
     <div class="lanes">
