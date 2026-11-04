@@ -280,4 +280,9 @@ p { margin: 0; max-width: 65ch; }
 .skin-switch button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: #e6ebef; background: transparent; border: 1px solid #3a4450; padding: 8px 10px; cursor: pointer; }
 .skin-switch button[aria-pressed="true"] { background: #e6ebef; color: #0b0d10; border-color: #e6ebef; }
 .ph { }
-.brand svg g { stroke: var(--signal); }
+.brand { gap: 12px; }
+.brand-mark { height: 32px; width: auto; flex: none; }
+.brand-word { height: 10px; width: auto; flex: none; }
+@media (max-width: 420px) { .brand-word { height: 8px; } }
+.site-footer .brand-mark { height: 40px; }
+.site-footer .brand-word { height: 11px; }

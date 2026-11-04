@@ -82,6 +82,7 @@ def icon(key):
     svg = re.sub(r"<title>.*?</title>", "", svg)
     return svg.replace('role="img"', 'aria-hidden="true" focusable="false"')
 
+BRAND = '<img class="brand-mark" src="assets/brand/mark.svg" alt="" width="44" height="32"><img class="brand-word" src="assets/brand/wordmark.svg" alt="Quantech Graphics" width="175" height="10">'
 LOGO = '''<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="none" stroke="#f2a93b" stroke-width="2"><path d="M16 2 28 9v14l-12 7-12-7V9z"/><circle cx="16" cy="16" r="5.5"/><path d="M19.5 19.5 24 24"/></g></svg>'''
 
 def social_link(key, cls="social"):
@@ -116,7 +117,7 @@ def header(active):
            if CFG["preview"] else "")
     return f'''{bar}<header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Quantech Graphics home">{LOGO}<span>Quantech<small>Graphics</small></span></a>
+    <a class="brand" href="index.html" aria-label="Quantech Graphics home">{BRAND}</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
     <nav class="nav" id="site-nav" aria-label="Main">{links}</nav>
   </div>
@@ -130,7 +131,7 @@ def footer():
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="index.html">{LOGO}<span>Quantech<small>Graphics</small></span></a>
+        <a class="brand" href="index.html" aria-label="Quantech Graphics home">{BRAND}</a>
         <p class="foot-tag">{E(CFG["tagline"])}</p>
         <p class="foot-line">Independent game studio, tools developer and technical art partner. Unreal, Unity, Godot and the web.</p>
       </div>
@@ -619,7 +620,11 @@ def build():
     shutil.copy(SRC / "assets" / "site.css", DIST / "assets" / "site.css")
     shutil.copy(SRC / "assets" / "site.js", DIST / "assets" / "site.js")
     shutil.copytree(SRC / "assets" / "themes", DIST / "assets" / "themes")
-    (DIST / "assets" / "favicon.svg").write_text(LOGO.replace('aria-hidden="true" focusable="false"', 'xmlns="http://www.w3.org/2000/svg"'))
+    shutil.copytree(SRC / "assets" / "brand", DIST / "assets" / "brand")
+    mark = (SRC / "assets" / "brand" / "mark.svg").read_text()
+    fav = mark.replace('viewBox="813 377 278 203"', 'viewBox="797 323 310 310"').replace(
+        "<title>Quantech Graphics</title>", '<rect x="797" y="323" width="310" height="310" rx="56" fill="#0b1015"/>')
+    (DIST / "assets" / "favicon.svg").write_text(fav)
     for name, (w, h, label) in IMG_SLOTS.items():
         src = img_src(name)
         if src.endswith(".svg"):
