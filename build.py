@@ -82,8 +82,8 @@ def icon(key):
     svg = re.sub(r"<title>.*?</title>", "", svg)
     return svg.replace('role="img"', 'aria-hidden="true" focusable="false"')
 
-BRAND_ANIM = '<span class="brand-anim" data-logo-anim><img class="brand-mark" src="assets/brand/mark.svg" alt="" width="44" height="32"></span><img class="brand-word" src="assets/brand/wordmark.svg" alt="Quantech Graphics" width="175" height="10">'
-BRAND = '<img class="brand-mark" src="assets/brand/mark.svg" alt="" width="44" height="32"><img class="brand-word" src="assets/brand/wordmark.svg" alt="Quantech Graphics" width="175" height="10">'
+BRAND_ANIM = '<span class="brand-anim" data-logo-anim><img class="brand-mark" src="assets/brand/mark.svg" alt="" width="44" height="32"></span><img class="brand-word" src="assets/brand/wordmark-2line.svg" alt="Quantech Graphics" width="89" height="24">'
+BRAND = '<img class="brand-mark" src="assets/brand/mark.svg" alt="" width="44" height="32"><img class="brand-word" src="assets/brand/wordmark-2line.svg" alt="Quantech Graphics" width="89" height="24">'
 LOGO = '''<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g fill="none" stroke="#f2a93b" stroke-width="2"><path d="M16 2 28 9v14l-12 7-12-7V9z"/><circle cx="16" cy="16" r="5.5"/><path d="M19.5 19.5 24 24"/></g></svg>'''
 
 def social_link(key, cls="social"):

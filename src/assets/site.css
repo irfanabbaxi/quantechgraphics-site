@@ -282,14 +282,16 @@ p { margin: 0; max-width: 65ch; }
 .ph { }
 .brand { gap: 12px; }
 .brand-mark { height: 32px; width: auto; flex: none; }
-.brand-word { height: 10px; width: auto; flex: none; }
-@media (max-width: 420px) { .brand-word { height: 8px; } }
-.site-footer .brand-mark { height: 40px; }
-.site-footer .brand-word { height: 11px; }
+.brand-word { height: 24px; width: auto; flex: none; }
+.site-header .wrap { min-height: 76px; }
+@media (max-width: 420px) { .brand-word { height: 20px; } }
+.site-footer .brand-mark { height: 48px; }
+.site-footer .brand-word { height: 26px; }
 
 /* ---------- animated logo ---------- */
-.brand-anim { display: block; width: 44px; flex: none; }
-.brand-anim > .brand-mark { width: 44px; height: auto; }
+.brand-anim { display: block; width: 62px; flex: none; }
+.brand-anim > .brand-mark { width: 62px; height: auto; }
+@media (max-width: 420px) { .brand-anim, .brand-anim > .brand-mark { width: 52px; } }
 .qg-intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--ground); transition: opacity .45s ease; }
 .qg-intro.out { opacity: 0; pointer-events: none; }
 .qg-intro-logo { width: min(520px, 78vw); }
