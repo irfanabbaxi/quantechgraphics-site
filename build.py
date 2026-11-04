@@ -170,10 +170,15 @@ def footer():
 THEMES = [("ops", "Ops"), ("synapse", "Synapse"), ("chrome", "Chrome")]
 FONTS_EXTRA = "https://fonts.googleapis.com/css2?family=Michroma&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&family=Saira+Condensed:wght@600;700;800&family=Saira:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
 
+def ver(rel):
+    """Short content hash so browsers and the CDN fetch a changed file right away."""
+    import hashlib
+    return hashlib.sha1((SRC / rel).read_bytes()).hexdigest()[:8]
+
 def theme_links():
     t = CFG.get("theme", "ops")
     if not CFG.get("theme_switcher"):
-        return "" if t == "ops" else f'<link rel="stylesheet" href="{FONTS_EXTRA}">\n<link rel="stylesheet" href="assets/themes/{t}.css">'
+        return "" if t == "ops" else f'<link rel="stylesheet" href="{FONTS_EXTRA}">\n<link rel="stylesheet" href="assets/themes/{t}.css?v={ver("assets/themes/" + t + ".css")}">'
     # preview: load all skins, pick one from the switcher (remembered per browser)
     return (f'<link rel="stylesheet" href="{FONTS_EXTRA}">\n'
             + "".join(f'<link rel="stylesheet" href="assets/themes/{k}.css">\n' for k, _ in THEMES if k != "ops")
@@ -213,7 +218,7 @@ def page(fname, title, desc, body, active=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v={ver("assets/site.css")}">
 {theme_links()}
 </head>
 <body>
@@ -223,9 +228,9 @@ def page(fname, title, desc, body, active=None):
 </main>
 {footer()}
 {switcher()}
-<script src="assets/brand/quantech-logo.js"></script>
+<script src="assets/brand/quantech-logo.js?v={ver("assets/brand/quantech-logo.js")}"></script>
 <script>window.QG_INTRO = "{CFG.get("logo_intro", "first-visit")}";</script>
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v={ver("assets/site.js")}"></script>
 </body>
 </html>
 '''
