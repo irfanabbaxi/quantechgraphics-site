@@ -90,6 +90,21 @@
     onIntroEnd: function () { setTimeout(finish, 450); }
   });
   overlay.querySelector('.qg-intro-skip').addEventListener('click', finish);
+  if (location.hash === '#intro') { // diagnostics for browsers where the intro doesn't show
+    [300, 1500, 3000].forEach(function (t) {
+      setTimeout(function () {
+        try {
+          var sv = overlay.querySelector('svg'), r = sv ? sv.getBoundingClientRect() : null;
+          var an = document.getAnimations ? document.getAnimations() : [];
+          var run = an.filter(function (a) { return a.playState === 'running'; }).length;
+          var poly = sv && sv.querySelector('polygon'), cs = poly ? getComputedStyle(poly) : null;
+          console.info('[QG logo] t=' + t, { svg: r ? Math.round(r.width) + 'x' + Math.round(r.height) : 'none', anims: an.length, running: run,
+            firstTime: an[0] ? Math.round(an[0].currentTime) : null, timeline: document.timeline ? Math.round(document.timeline.currentTime) : null,
+            shardOpacity: cs ? cs.opacity : null, shardFill: cs ? cs.fill : null });
+        } catch (e) { console.info('[QG logo] diag error', String(e)); }
+      }, t);
+    });
+  }
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') finish(); });
   setTimeout(finish, 6500); // safety net
 })();
