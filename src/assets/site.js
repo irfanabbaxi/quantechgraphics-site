@@ -70,8 +70,9 @@
   var mode = window.QG_INTRO || 'first-visit';
   var seen = false;
   try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
-  if (location.hash === '#intro') { seen = false; reduced = false; } // test hook: quantechgraphics.com/#intro replays the intro
-  if (window.console) console.info('[QG logo] v2', { reducedMotion: reduced, introAlreadySeen: seen, mode: mode });
+  var force = location.hash === '#intro', reducedSetting = reduced;
+  if (force) { seen = false; reduced = false; } // test hook: quantechgraphics.com/#intro replays the intro
+  if (window.console) console.info('[QG logo] v3', { reduceMotionSetting: reducedSetting, forced: force, introAlreadySeen: seen, mode: mode });
   if (reduced || mode === 'never' || (mode === 'first-visit' && seen)) return;
   try { localStorage.setItem(KEY, '1'); } catch (e) {}
 
@@ -86,7 +87,7 @@
     setTimeout(function () { if (logo) logo.destroy(); overlay.remove(); }, 500);
   }
   logo = QuantechLogo.mount(overlay.querySelector('.qg-intro-logo'), {
-    intro: 'always', idle: false, hoverPulse: false, storageKey: KEY, wordmarkLines: 2,
+    intro: 'always', idle: false, hoverPulse: false, ignoreReducedMotion: force, storageKey: KEY, wordmarkLines: 2,
     onIntroEnd: function () { setTimeout(finish, 450); }
   });
   overlay.querySelector('.qg-intro-skip').addEventListener('click', finish);

@@ -101,7 +101,7 @@
   function mount(host, opts) {
     var o = Object.assign({ intro: "first-visit", idle: true, idleEvery: 9000, hoverPulse: true, wordmark: true,
       label: "Quantech Graphics", wordmarkLines: 1, storageKey: "qg-logo-intro-seen", onIntroEnd: null }, opts || {});
-    var reduced = global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var reduced = !o.ignoreReducedMotion && global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches; // site patch: #intro test hook can force motion
     var id = "qgl" + (++uidN);
     var two = o.wordmark && o.wordmarkLines === 2;
     var vb = !o.wordmark ? "800 365 304 228" : two ? "760 355 384 400" : "600 350 720 370";
