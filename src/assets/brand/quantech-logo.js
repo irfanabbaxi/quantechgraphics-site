@@ -100,10 +100,11 @@
 
   function mount(host, opts) {
     var o = Object.assign({ intro: "first-visit", idle: true, idleEvery: 9000, hoverPulse: true, wordmark: true,
-      label: "Quantech Graphics", storageKey: "qg-logo-intro-seen", onIntroEnd: null }, opts || {});
+      label: "Quantech Graphics", wordmarkLines: 1, storageKey: "qg-logo-intro-seen", onIntroEnd: null }, opts || {});
     var reduced = global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var id = "qgl" + (++uidN);
-    var vb = o.wordmark ? "600 350 720 370" : "800 365 304 228";
+    var two = o.wordmark && o.wordmarkLines === 2;
+    var vb = !o.wordmark ? "800 365 304 228" : two ? "760 355 384 400" : "600 350 720 370";
     var svg = el("svg", { viewBox: vb, role: "img", "aria-label": o.label, style: "display:block;width:100%;height:auto;overflow:visible" });
     host.appendChild(svg);
     var defs = el("defs", {}, svg);
@@ -118,7 +119,10 @@
     var uses = [];
     if (o.wordmark) {
       var g = el("g", { fill: COL.word }, svg);
-      L.uses.forEach(function (u) { var gg = el("g", {}, g); el("path", { d: L.glyphs[u[0]], transform: "translate(" + u[1] + "," + u[2] + ")" }, gg); uses.push(gg); }); // animate the wrapper so the glyph keeps its own transform
+      L.uses.forEach(function (u, i) {
+        // wordmarkLines 2: QUANTECH / GRAPHICS on two rows, each centred under the mark (x 952)
+        var dx = two ? (i < 8 ? 161.5 : -172.6) : 0, dy = two && i >= 8 ? 47.1 : 0;
+        var gg = el("g", {}, g); el("path", { d: L.glyphs[u[0]], transform: "translate(" + (u[1] + dx) + "," + (u[2] + dy) + ")" }, gg); uses.push(gg); }); // animate the wrapper so the glyph keeps its own transform
     }
     var shards = shardGeometry().map(function (s) {
       var poly = el("polygon", { points: s.pts, "stroke-linejoin": "round" }, s.band >= 0 ? slabs[s.band] : sideG);

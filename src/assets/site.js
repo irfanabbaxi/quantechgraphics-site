@@ -86,7 +86,7 @@
     setTimeout(function () { if (logo) logo.destroy(); overlay.remove(); }, 500);
   }
   logo = QuantechLogo.mount(overlay.querySelector('.qg-intro-logo'), {
-    intro: 'always', idle: false, hoverPulse: false, storageKey: KEY,
+    intro: 'always', idle: false, hoverPulse: false, storageKey: KEY, wordmarkLines: 2,
     onIntroEnd: function () { setTimeout(finish, 450); }
   });
   overlay.querySelector('.qg-intro-skip').addEventListener('click', finish);
