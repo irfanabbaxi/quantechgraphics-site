@@ -57,7 +57,7 @@
 
 // Animated logo: header pulse + first-visit intro (assets/brand/quantech-logo.js)
 (function () {
-  if (!window.QuantechLogo) return; // no JS module: static logo stays
+  if (!window.QuantechLogo) { if (window.console) console.info('[QG logo] animation script not loaded'); return; } // static logo stays
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var KEY = 'qg-logo-intro-seen';
 
@@ -70,6 +70,8 @@
   var mode = window.QG_INTRO || 'first-visit';
   var seen = false;
   try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (location.hash === '#intro') { seen = false; reduced = false; } // test hook: quantechgraphics.com/#intro replays the intro
+  if (window.console) console.info('[QG logo] v2', { reducedMotion: reduced, introAlreadySeen: seen, mode: mode });
   if (reduced || mode === 'never' || (mode === 'first-visit' && seen)) return;
   try { localStorage.setItem(KEY, '1'); } catch (e) {}
 
