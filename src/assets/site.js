@@ -93,3 +93,12 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') finish(); });
   setTimeout(finish, 6500); // safety net
 })();
+
+// Header: tall on load, compact once the page scrolls
+(function () {
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function upd() { h.classList.toggle('compact', window.scrollY > 40); }
+  window.addEventListener('scroll', upd, { passive: true });
+  upd();
+})();

@@ -297,3 +297,19 @@ p { margin: 0; max-width: 65ch; }
 .qg-intro-logo { width: min(520px, 78vw); }
 .qg-intro-skip { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--line); padding: 10px 14px; cursor: pointer; }
 .qg-intro-skip:hover { color: var(--text); border-color: var(--text); }
+
+/* ---------- tall header on load, compact after scroll ---------- */
+.site-header .wrap { min-height: max(76px, 17vh); transition: min-height .3s ease; }
+.site-header .brand-anim, .site-header .brand-anim > .brand-mark { width: clamp(62px, 9vh, 120px); transition: width .3s ease; }
+.site-header .brand-word { height: clamp(24px, 4.4vh, 52px); transition: height .3s ease; }
+.site-header .brand { gap: clamp(12px, 1.4vh, 20px); }
+.site-header.compact .wrap { min-height: 76px; }
+.site-header.compact .brand-anim, .site-header.compact .brand-anim > .brand-mark { width: 62px; }
+.site-header.compact .brand-word { height: 24px; }
+@media (max-width: 420px) {
+  .site-header .brand-anim, .site-header .brand-anim > .brand-mark { width: 72px; }
+  .site-header .brand-word { height: 28px; }
+  .site-header.compact .brand-anim, .site-header.compact .brand-anim > .brand-mark { width: 52px; }
+  .site-header.compact .brand-word { height: 20px; }
+}
+@media (max-width: 980px) { .nav { top: 100%; } }
