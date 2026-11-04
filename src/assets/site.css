@@ -286,3 +286,12 @@ p { margin: 0; max-width: 65ch; }
 @media (max-width: 420px) { .brand-word { height: 8px; } }
 .site-footer .brand-mark { height: 40px; }
 .site-footer .brand-word { height: 11px; }
+
+/* ---------- animated logo ---------- */
+.brand-anim { display: block; width: 44px; flex: none; }
+.brand-anim > .brand-mark { width: 44px; height: auto; }
+.qg-intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--ground); transition: opacity .45s ease; }
+.qg-intro.out { opacity: 0; pointer-events: none; }
+.qg-intro-logo { width: min(520px, 78vw); }
+.qg-intro-skip { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--line); padding: 10px 14px; cursor: pointer; }
+.qg-intro-skip:hover { color: var(--text); border-color: var(--text); }

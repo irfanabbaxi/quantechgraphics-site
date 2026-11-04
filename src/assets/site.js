@@ -54,3 +54,40 @@
   btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-skin-btn')); }); });
   set(root.getAttribute('data-skin') || 'ops');
 })();
+
+// Animated logo: header pulse + first-visit intro (assets/brand/quantech-logo.js)
+(function () {
+  if (!window.QuantechLogo) return; // no JS module: static logo stays
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var KEY = 'qg-logo-intro-seen';
+
+  var holder = document.querySelector('[data-logo-anim]');
+  if (holder) {
+    holder.innerHTML = '';
+    QuantechLogo.mount(holder, { intro: 'never', idle: true, idleEvery: 9000, wordmark: false });
+  }
+
+  var mode = window.QG_INTRO || 'first-visit';
+  var seen = false;
+  try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (reduced || mode === 'never' || (mode === 'first-visit' && seen)) return;
+  try { localStorage.setItem(KEY, '1'); } catch (e) {}
+
+  var overlay = document.createElement('div');
+  overlay.className = 'qg-intro';
+  overlay.innerHTML = '<div class="qg-intro-logo"></div><button type="button" class="qg-intro-skip">Skip intro</button>';
+  document.body.appendChild(overlay);
+  var done = false, logo;
+  function finish() {
+    if (done) return; done = true;
+    overlay.classList.add('out');
+    setTimeout(function () { if (logo) logo.destroy(); overlay.remove(); }, 500);
+  }
+  logo = QuantechLogo.mount(overlay.querySelector('.qg-intro-logo'), {
+    intro: 'always', idle: false, hoverPulse: false, storageKey: KEY,
+    onIntroEnd: function () { setTimeout(finish, 450); }
+  });
+  overlay.querySelector('.qg-intro-skip').addEventListener('click', finish);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') finish(); });
+  setTimeout(finish, 6500); // safety net
+})();
